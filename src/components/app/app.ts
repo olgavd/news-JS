@@ -2,9 +2,8 @@ import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
 
 class App {
-
     private controller: AppController;
-    private view: AppView; 
+    private view: AppView;
 
     constructor() {
         this.controller = new AppController();
@@ -12,11 +11,13 @@ class App {
     }
 
     start() {
-        document
-            .querySelector('.sources')
+
+        const sourcesElement = document.querySelector<HTMLElement>('.sources');
+        if(sourcesElement) {
+        sourcesElement
             .addEventListener('click', (e) => this.controller.getNews(e, (data) => this.view.drawNews(data)));
         this.controller.getSources((data) => this.view.drawSources(data));
     }
-}
+}}
 
 export default App;
