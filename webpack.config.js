@@ -33,7 +33,7 @@ const baseConfig = {
     output: {
         path: path.resolve(__dirname, './dist'),
         clean: true,
-        filename: '[name].js',
+        filename: 'index.js',
         publicPath: '/news-JS/',
     },
     plugins: [
