@@ -28,7 +28,6 @@ enum NewsSelector {
 class News {
     public draw(data: Article[]): void {
         const news = data.slice(0, 10);
-
         const fragment = document.createDocumentFragment();
         const newsItemTemp = document.querySelector<HTMLTemplateElement>('#newsItemTemp');
 
@@ -38,7 +37,6 @@ class News {
 
         news.forEach((item, idx) => {
             const newsClone = newsItemTemp.content.cloneNode(true) as DocumentFragment;
-
             const newsItem = newsClone.querySelector(NewsSelector.ITEM);
             const newsPhoto = newsClone.querySelector(NewsSelector.PHOTO);
             const newsAuthor = newsClone.querySelector(NewsSelector.AUTHOR);

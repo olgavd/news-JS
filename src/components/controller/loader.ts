@@ -1,8 +1,8 @@
 type LoaderOptions = Record<string, string>;
 
 interface RequestOptions {
-    endpoint: string;
-    options?: LoaderOptions;
+    readonly endpoint: string;
+    readonly options?: LoaderOptions;
 }
 
 type ResponseCallback<T> = (data: T) => void;
@@ -17,8 +17,8 @@ enum HttpStatus {
 }
 
 class Loader {
-    private baseLink: string;
-    private options: Record<string, string>;
+    private readonly baseLink: string;
+    private readonly options: Record<string, string>;
 
     constructor(baseLink: string, options: LoaderOptions) {
         this.baseLink = baseLink;

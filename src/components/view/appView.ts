@@ -9,8 +9,8 @@ export type NewsResponse = ApiResponse<'articles', Article>;
 export type SourcesResponse = ApiResponse<'sources', Source>;
 
 export class AppView {
-    private news: News;
-    private sources: Sources;
+    private readonly news: News;
+    private readonly sources: Sources;
 
     constructor() {
         this.news = new News();
