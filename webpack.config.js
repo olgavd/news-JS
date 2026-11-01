@@ -1,7 +1,6 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { merge } from 'webpack-merge';
-import DotenvWebpackPlugin from 'dotenv-webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import webpack from 'webpack';
 import dotenv from 'dotenv';
@@ -37,7 +36,6 @@ const baseConfig = {
         publicPath: '/news-JS/',
     },
     plugins: [
-        new DotenvWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './src/index.html'),
             filename: 'index.html',
