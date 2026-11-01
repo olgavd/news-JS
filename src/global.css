@@ -20,21 +20,40 @@ header h1 {
 
 footer {
     height: 100px;
+    gap: 2rem;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 }
-footer .copyright {
+footer .copyright,
+.github,
+.year,
+.logo,
+.link {
     font-size: 14px;
-    color: #333;
+    color: #bbb7b7;
     text-align: center;
 }
-footer .copyright a {
-    color: #444;
+footer .copyright a,
+.github a,
+.year,
+.logo,
+.link a {
+    color: #bbb7b7;
 }
-footer .copyright a:hover {
-    color: #555;
+footer .copyright a:hover,
+.github a:hover,
+.logo,
+.link a:hover {
+    color: #918888;
 }
 footer .copyright:before {
     content: '©';
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
 }
