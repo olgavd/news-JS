@@ -5,11 +5,8 @@ type ApiResponse<K extends string, T> = {
     [key in K]?: T[];
 };
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-export interface NewsResponse extends ApiResponse<'articles', Article> {}
-
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-export interface SourcesResponse extends ApiResponse<'sources', Source> {}
+export type NewsResponse = ApiResponse<'articles', Article>;
+export type SourcesResponse = ApiResponse<'sources', Source>;
 
 export class AppView {
     private news: News;
