@@ -50,7 +50,7 @@ const baseConfig = {
 };
 
 export default async ({ mode }) => {
-    const isProductionMode = mode === 'prod';
+    const isProductionMode = mode === 'production';
     const envConfigModule = isProductionMode
         ? await import('./webpack.prod.config.js')
         : await import('./webpack.dev.config.js');
