@@ -5,8 +5,8 @@ type ApiResponse = NewsResponse | SourcesResponse;
 type ResponseCallback<T extends ApiResponse> = (data: T) => void;
 
 enum ApiEndpoint {
-    SOURCES = 'sources',
-    EVERYTHING = 'everything',
+    SOURCES = '/mocks/sources',
+    EVERYTHING = '/mocks/everything',
 }
 
 class AppController extends AppLoader {
