@@ -34,7 +34,7 @@ class News {
             const newsSource = newsClone.querySelector('.news__description-source');
             const newsContent = newsClone.querySelector('.news__description-content');
             const newsLink = newsClone.querySelector('.news__read-more a');
-    
+
             if (
                 !(newsItem instanceof HTMLElement) ||
                 !(newsPhoto instanceof HTMLElement) ||
@@ -50,23 +50,23 @@ class News {
 
             if (idx % 2) newsItem.classList.add('alt');
 
-        newsPhoto.style.backgroundImage = `url(${item.urlToImage || 'img/news_placeholder.jpg'})`;
-        newsAuthor.textContent = item.author || item.source.name;
-        newsDate.textContent = item.publishedAt.slice(0, 10).split('-').reverse().join('-');
-        newsTitle.textContent = item.title;
-        newsSource.textContent = item.source.name;
-        newsContent.textContent = item.description;
-        newsLink.setAttribute('href', item.url);
+            newsPhoto.style.backgroundImage = `url(${item.urlToImage || 'img/news_placeholder.jpg'})`;
+            newsAuthor.textContent = item.author || item.source.name;
+            newsDate.textContent = item.publishedAt.slice(0, 10).split('-').reverse().join('-');
+            newsTitle.textContent = item.title;
+            newsSource.textContent = item.source.name;
+            newsContent.textContent = item.description;
+            newsLink.setAttribute('href', item.url);
 
-        fragment.append(newsClone);
+            fragment.append(newsClone);
         });
 
-    const newsElement = document.querySelector('.news');
+        const newsElement = document.querySelector('.news');
 
-    if (newsElement instanceof HTMLElement) {
-        newsElement.innerHTML = '';
-        newsElement.appendChild(fragment);
-    }
+        if (newsElement instanceof HTMLElement) {
+            newsElement.innerHTML = '';
+            newsElement.appendChild(fragment);
+        }
     }
 }
 

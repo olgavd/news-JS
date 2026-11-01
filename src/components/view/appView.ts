@@ -3,9 +3,12 @@ import Sources, { type Source } from './sources/sources';
 
 type ApiResponse<K extends string, T> = {
     [key in K]?: T[];
-}
+};
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface NewsResponse extends ApiResponse<'articles', Article> {}
+
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface SourcesResponse extends ApiResponse<'sources', Source> {}
 
 export class AppView {

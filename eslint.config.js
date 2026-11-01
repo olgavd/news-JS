@@ -14,8 +14,14 @@ export default tseslint.config(
             'webpack.dev.config.js',
             'webpack.prod.config.js',
         ],
+    },
 
-        files: ['**/*.{ts}'],
+    js.configs.recommended,
+
+    ...tseslint.configs.recommended,
+
+    {
+        files: ['**/*.ts'],
 
         languageOptions: {
             parser: tseslint.parser,
@@ -29,10 +35,11 @@ export default tseslint.config(
                 ...globals.es2020,
             },
         },
+
         plugins: {
-            '@typescript-eslint': tseslint.plugin,
             import: eslintPluginImport,
         },
+
         rules: {
             'no-debugger': 'off',
             'no-console': 'off',
@@ -40,10 +47,6 @@ export default tseslint.config(
             '@typescript-eslint/no-explicit-any': 'error',
         },
     },
-
-    js.configs.recommended,
-
-    ...tseslint.configs.recommended,
 
     eslintPluginPrettierRecommended
 );

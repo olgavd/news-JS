@@ -29,7 +29,7 @@ class Sources {
             fragment.append(sourceClone);
         });
 
-            const sourcesElement = document.querySelector('.sources');
+        const sourcesElement = document.querySelector('.sources');
 
         if (sourcesElement instanceof HTMLElement) {
             sourcesElement.innerHTML = '';

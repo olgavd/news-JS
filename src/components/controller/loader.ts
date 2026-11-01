@@ -18,7 +18,7 @@ class Loader {
 
     public getResp(
         { endpoint, options = {} }: RequestOptions,
-        callback = (data: unknown) => {
+        callback: ResponseCallback = () => {
             console.error('No callback for GET response');
         }
     ): void {

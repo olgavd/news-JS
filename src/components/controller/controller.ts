@@ -13,7 +13,6 @@ class AppController extends AppLoader {
     }
 
     public getNews(e: MouseEvent, callback: ResponseCallback): void {
-
         const eventTarget = e.target;
 
         if (!(eventTarget instanceof HTMLElement)) {
@@ -31,7 +30,7 @@ class AppController extends AppLoader {
         while (target !== newsContainer) {
             if (target.classList.contains('source__item')) {
                 const sourceId = target.getAttribute('data-source-id');
-                
+
                 if (!sourceId) {
                     return;
                 }
@@ -52,14 +51,12 @@ class AppController extends AppLoader {
             }
 
             const parent = target.parentElement;
-            
-            if (!parent) {
 
+            if (!parent) {
                 return;
             }
 
             target = parent;
-
         }
     }
 }

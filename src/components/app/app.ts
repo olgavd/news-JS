@@ -1,7 +1,6 @@
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
-import { NewsResponse, SourcesResponse } from '../view/appView'; 
-
+import { NewsResponse, SourcesResponse } from '../view/appView';
 
 class App {
     private controller: AppController;
@@ -14,11 +13,13 @@ class App {
 
     public start(): void {
         const sourcesElement = document.querySelector<HTMLElement>('.sources');
-        if(sourcesElement) {
-        sourcesElement
-            .addEventListener('click', (e) => this.controller.getNews(e, (data) => this.view.drawNews(data as NewsResponse)));
-        this.controller.getSources((data) => this.view.drawSources(data as SourcesResponse));
+        if (sourcesElement) {
+            sourcesElement.addEventListener('click', (e) =>
+                this.controller.getNews(e, (data) => this.view.drawNews(data as NewsResponse))
+            );
+            this.controller.getSources((data) => this.view.drawSources(data as SourcesResponse));
+        }
     }
-}}
+}
 
 export default App;
