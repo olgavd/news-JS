@@ -1,14 +1,12 @@
 import News, { type Article } from './news/news';
-
 import Sources, { type Source } from './sources/sources';
 
-type NewsResponse = {
-    articles?: Article[];
-};
+type ApiResponse<K extends string, T> = {
+    [key in K]?: T[];
+}
 
-type SourcesResponse = {
-    sources?: Source[];
-};
+export interface NewsResponse extends ApiResponse<'articles', Article> {}
+export interface SourcesResponse extends ApiResponse<'sources', Source> {}
 
 export class AppView {
     private news: News;
@@ -19,15 +17,13 @@ export class AppView {
         this.sources = new Sources();
     }
 
-    drawNews(data: unknown) {
-        const response = data as NewsResponse;
-        const values = response?.articles ?? [];
+    public drawNews(data: NewsResponse): void {
+        const values = data?.articles ?? [];
         this.news.draw(values);
     }
 
-    drawSources(data: unknown) {
-        const response = data as SourcesResponse;
-        const values = response?.sources ?? [];
+    public drawSources(data: SourcesResponse): void {
+        const values = data?.sources ?? [];
         this.sources.draw(values);
     }
 }

@@ -13,14 +13,18 @@ export type Article = {
 };
 
 class News {
-    draw(data: Article[]) {
-        const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
+    public draw(data: Article[]): void {
+        const news = data.slice(0, 10);
 
         const fragment = document.createDocumentFragment();
-        const newsItemTemp = <HTMLTemplateElement>document.querySelector('#newsItemTemp');
+        const newsItemTemp = document.querySelector<HTMLTemplateElement>('#newsItemTemp');
+
+        if (!newsItemTemp) {
+            return;
+        }
 
         news.forEach((item, idx) => {
-            const newsClone = <DocumentFragment>newsItemTemp.content.cloneNode(true);
+            const newsClone = newsItemTemp.content.cloneNode(true) as DocumentFragment;
 
             const newsItem = newsClone.querySelector('.news__item');
             const newsPhoto = newsClone.querySelector('.news__meta-photo');

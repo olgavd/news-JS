@@ -3,7 +3,7 @@ import AppLoader from './appLoader';
 type ResponseCallback = (data: unknown) => void;
 
 class AppController extends AppLoader {
-    getSources(callback: ResponseCallback): void {
+    public getSources(callback: ResponseCallback): void {
         super.getResp(
             {
                 endpoint: 'sources',
@@ -12,10 +12,10 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e: MouseEvent, callback: ResponseCallback): void {
+    public getNews(e: MouseEvent, callback: ResponseCallback): void {
+
         const eventTarget = e.target;
 
-        
         if (!(eventTarget instanceof HTMLElement)) {
             return;
         }
@@ -50,6 +50,7 @@ class AppController extends AppLoader {
                 }
                 return;
             }
+
             const parent = target.parentElement;
             
             if (!parent) {
