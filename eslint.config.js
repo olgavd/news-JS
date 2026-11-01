@@ -3,8 +3,6 @@ import tseslint from 'typescript-eslint';
 import eslintPluginImport from 'eslint-plugin-import-x';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import globals from 'globals';
-import tsPlugin from "@typescript-eslint/eslint-plugin";
-import tsParser from "@typescript-eslint/parser";
 
 export default tseslint.config(
     {
@@ -32,13 +30,14 @@ export default tseslint.config(
             },
         },
         plugins: {
+            '@typescript-eslint': tseslint.plugin,
             import: eslintPluginImport,
         },
         rules: {
             'no-debugger': 'off',
             'no-console': 'off',
             'class-methods-use-this': 'off',
-            '@typescript-eslint/no-explicit-any': 'warn',
+            '@typescript-eslint/no-explicit-any': 'error',
         },
     },
 
