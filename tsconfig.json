@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "es2022",
+        "module": "commonjs",
+        "lib": ["dom", "es2022"],
+        "allowJs": true,
+        "checkJs": false,
+        "rootDir": "./src",
+        "outDir": "./dist",
+        "isolatedModules": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "noImplicitAny": true,
+        "skipLibCheck": true,
+        "types": ["node"]
+    },
+    "include": ["src/**/*"]
+}
