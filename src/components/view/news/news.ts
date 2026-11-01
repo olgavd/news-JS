@@ -14,6 +14,17 @@ export interface Source {
     name: string;
 }
 
+enum NewsSelector {
+    ITEM = '.news__item',
+    PHOTO = '.news__meta-photo',
+    AUTHOR = '.news__meta-author',
+    DATE = '.news__meta-date',
+    TITLE = '.news__description-title',
+    SOURCE = '.news__description-source',
+    CONTENT = '.news__description-content',
+    LINK = '.news__read-more a',
+}
+
 class News {
     public draw(data: Article[]): void {
         const news = data.slice(0, 10);
@@ -28,14 +39,14 @@ class News {
         news.forEach((item, idx) => {
             const newsClone = newsItemTemp.content.cloneNode(true) as DocumentFragment;
 
-            const newsItem = newsClone.querySelector('.news__item');
-            const newsPhoto = newsClone.querySelector('.news__meta-photo');
-            const newsAuthor = newsClone.querySelector('.news__meta-author');
-            const newsDate = newsClone.querySelector('.news__meta-date');
-            const newsTitle = newsClone.querySelector('.news__description-title');
-            const newsSource = newsClone.querySelector('.news__description-source');
-            const newsContent = newsClone.querySelector('.news__description-content');
-            const newsLink = newsClone.querySelector('.news__read-more a');
+            const newsItem = newsClone.querySelector(NewsSelector.ITEM);
+            const newsPhoto = newsClone.querySelector(NewsSelector.PHOTO);
+            const newsAuthor = newsClone.querySelector(NewsSelector.AUTHOR);
+            const newsDate = newsClone.querySelector(NewsSelector.DATE);
+            const newsTitle = newsClone.querySelector(NewsSelector.TITLE);
+            const newsSource = newsClone.querySelector(NewsSelector.SOURCE);
+            const newsContent = newsClone.querySelector(NewsSelector.CONTENT);
+            const newsLink = newsClone.querySelector(NewsSelector.LINK);
 
             if (
                 !(newsItem instanceof HTMLElement) ||

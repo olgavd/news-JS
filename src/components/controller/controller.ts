@@ -3,11 +3,16 @@ import type { NewsResponse, SourcesResponse } from '../view/appView';
 
 type ResponseCallback<T> = (data: T) => void;
 
+enum ApiEndpoint {
+    SOURCES = 'sources',
+    EVERYTHING = 'everything',
+}
+
 class AppController extends AppLoader {
     public getSources(callback: ResponseCallback<SourcesResponse>): void {
         super.getResp(
             {
-                endpoint: 'sources',
+                endpoint: ApiEndpoint.SOURCES,
             },
             callback
         );
@@ -40,7 +45,7 @@ class AppController extends AppLoader {
                     newsContainer.setAttribute('data-source', sourceId);
                     super.getResp(
                         {
-                            endpoint: 'everything',
+                            endpoint: ApiEndpoint.EVERYTHING,
                             options: {
                                 sources: sourceId,
                             },
