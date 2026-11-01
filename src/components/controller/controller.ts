@@ -1,7 +1,8 @@
 import AppLoader from './appLoader';
 import type { NewsResponse, SourcesResponse } from '../view/appView';
 
-type ResponseCallback<T> = (data: T) => void;
+type ApiResponse = NewsResponse | SourcesResponse;
+type ResponseCallback<T extends ApiResponse> = (data: T) => void;
 
 enum ApiEndpoint {
     SOURCES = 'sources',
