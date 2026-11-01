@@ -1,16 +1,18 @@
 import './news.css';
 
-export type Article = {
+export interface Article {
     author: string | null;
     description: string | null;
     publishedAt: string;
     title: string;
     url: string;
     urlToImage: string | null;
-    source: {
-        name: string;
-    };
-};
+    source: Source;
+}
+
+export interface Source {
+    name: string;
+}
 
 class News {
     public draw(data: Article[]): void {

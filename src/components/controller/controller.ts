@@ -1,9 +1,10 @@
 import AppLoader from './appLoader';
+import type { NewsResponse, SourcesResponse } from '../view/appView';
 
-type ResponseCallback = (data: unknown) => void;
+type ResponseCallback<T> = (data: T) => void;
 
 class AppController extends AppLoader {
-    public getSources(callback: ResponseCallback): void {
+    public getSources(callback: ResponseCallback<SourcesResponse>): void {
         super.getResp(
             {
                 endpoint: 'sources',
@@ -12,7 +13,7 @@ class AppController extends AppLoader {
         );
     }
 
-    public getNews(e: MouseEvent, callback: ResponseCallback): void {
+    public getNews(e: MouseEvent, callback: ResponseCallback<NewsResponse>): void {
         const eventTarget = e.target;
 
         if (!(eventTarget instanceof HTMLElement)) {

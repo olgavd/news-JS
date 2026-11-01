@@ -5,7 +5,7 @@ interface RequestOptions {
     options?: LoaderOptions;
 }
 
-type ResponseCallback = (data: unknown) => void;
+type ResponseCallback<T> = (data: T) => void;
 
 class Loader {
     private baseLink: string;
@@ -16,16 +16,16 @@ class Loader {
         this.options = options;
     }
 
-    public getResp(
+    public getResp<T>(
         { endpoint, options = {} }: RequestOptions,
-        callback: ResponseCallback = () => {
+        callback: ResponseCallback<T> = () => {
             console.error('No callback for GET response');
         }
     ): void {
         this.load('GET', endpoint, callback, options);
     }
 
-    public errorHandler(res: Response): Response {
+    private errorHandler(res: Response): Response {
         if (!res.ok) {
             if (res.status === 401 || res.status === 404)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
@@ -35,7 +35,7 @@ class Loader {
         return res;
     }
 
-    public makeUrl(options: LoaderOptions, endpoint: string): string {
+    private makeUrl(options: LoaderOptions, endpoint: string): string {
         const urlOptions = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
@@ -46,7 +46,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    public load(method: string, endpoint: string, callback: ResponseCallback, options: LoaderOptions = {}): void {
+    public load<T>(method: string, endpoint: string, callback: ResponseCallback<T>, options: LoaderOptions = {}): void {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
